@@ -46,8 +46,13 @@ export default function Hero() {
         className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"
       />
 
-      <div className="container relative grid items-center gap-12 pb-16 pt-12 sm:gap-14 sm:pb-20 sm:pt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-28 lg:pt-24">
-        <motion.div variants={container} initial="hidden" animate="show" className="relative z-10">
+      <div className="container relative grid items-center gap-9 pb-16 pt-8 sm:gap-14 sm:pb-20 sm:pt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-28 lg:pt-24">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="relative z-10 order-2 lg:order-1"
+        >
           <motion.div
             variants={item}
             className="glass inline-flex items-center gap-2.5 rounded-full py-2 pl-3 pr-4"
@@ -114,7 +119,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
+          className="relative order-1 lg:order-2"
         >
           {/* gold hairline frame sitting behind the photo */}
           <div
@@ -122,7 +127,7 @@ export default function Hero() {
             className="absolute -inset-2 rounded-[2.25rem] border border-gold/20 sm:-inset-3"
           />
 
-          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] sm:aspect-[5/5] sm:rounded-[2rem]">
+          <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] sm:aspect-[5/5] sm:rounded-[2rem]">
             <motion.div style={{ y: imageY }} className="absolute inset-0 scale-110">
               <SmartImage
                 src="https://images.unsplash.com/photo-1646640381839-02748ae8ddf0?auto=format&fit=crop&w=1100&q=80"
