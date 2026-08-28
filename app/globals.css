@@ -11,12 +11,14 @@
   html {
     scroll-behavior: smooth;
     /* offset for the sticky header when jumping to anchors */
-    scroll-padding-top: 7rem;
+    scroll-padding-top: 6rem;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
     @apply bg-white text-navy antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -32,39 +34,117 @@
 }
 
 @layer components {
+  /* ---------- buttons ---------- */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold
-           uppercase tracking-[0.12em] transition-all duration-300 focus:outline-none
-           focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-[0.78rem] font-semibold
+           uppercase tracking-[0.14em] transition-all duration-300 focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 sm:py-3.5 sm:text-sm;
   }
 
   .btn-gold {
-    @apply btn bg-gold text-navy shadow-soft hover:bg-gold-light hover:shadow-card
-           hover:-translate-y-0.5 active:translate-y-0;
+    @apply btn bg-gradient-to-b from-gold-light to-gold text-navy
+           shadow-[0_12px_34px_-12px_rgba(201,160,99,0.75)]
+           hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-12px_rgba(201,160,99,0.9)]
+           active:translate-y-0;
   }
 
   .btn-navy {
-    @apply btn bg-navy text-white hover:bg-navy-light hover:-translate-y-0.5 active:translate-y-0;
+    @apply btn bg-navy text-white shadow-[0_12px_34px_-14px_rgba(11,31,58,0.9)]
+           hover:-translate-y-0.5 hover:bg-navy-light active:translate-y-0;
   }
 
   .btn-outline {
-    @apply btn border border-white/30 text-white hover:border-gold hover:text-gold
-           hover:-translate-y-0.5 active:translate-y-0;
+    @apply btn border border-white/25 bg-white/5 text-white backdrop-blur-sm
+           hover:-translate-y-0.5 hover:border-gold/70 hover:bg-white/10 hover:text-gold-light
+           active:translate-y-0;
   }
 
+  .btn-ghost {
+    @apply btn border border-navy/15 bg-white text-navy hover:-translate-y-0.5 hover:border-gold
+           hover:text-gold-dark active:translate-y-0;
+  }
+
+  /* ---------- layout ---------- */
   .section {
-    @apply py-20 md:py-28;
+    @apply py-16 sm:py-20 md:py-28;
   }
 
+  /* ---------- type ---------- */
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.28em] text-gold-dark;
+    @apply text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-gold-dark sm:text-xs;
   }
 
   .eyebrow-light {
-    @apply text-xs font-semibold uppercase tracking-[0.28em] text-gold-light;
+    @apply text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-gold-light sm:text-xs;
   }
 
   .heading {
-    @apply text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[2.75rem];
+    @apply text-[2rem] font-bold leading-[1.1] tracking-[-0.02em] sm:text-4xl md:text-[2.75rem];
+  }
+
+  .text-gradient-gold {
+    background-image: linear-gradient(115deg, #e9d6a8 0%, #c9a063 42%, #f0e2be 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- surfaces ---------- */
+  .glass {
+    @apply border border-white/[0.12] bg-white/[0.07] backdrop-blur-xl;
+  }
+
+  .glass-light {
+    @apply border border-navy/[0.08] bg-white/80 backdrop-blur-xl;
+  }
+
+  /* premium card: hairline border + soft depth, gold edge on hover */
+  .card {
+    @apply relative overflow-hidden rounded-[1.5rem] border border-navy/[0.08] bg-white
+           shadow-[0_2px_10px_-4px_rgba(11,31,58,0.10)]
+           transition-all duration-500
+           hover:border-gold/40 hover:shadow-[0_28px_60px_-28px_rgba(11,31,58,0.45)];
+  }
+
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-gold/60 to-transparent;
+  }
+
+  /* faint film grain so large navy areas do not look flat */
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  /* light sweep that crosses a card on hover */
+  .shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-120%);
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 80%
+    );
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .group:hover .shine::after {
+    transform: translateX(120%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shine::after {
+      display: none;
+    }
   }
 }

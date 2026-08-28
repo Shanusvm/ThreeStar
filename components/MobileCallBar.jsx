@@ -24,7 +24,7 @@ export default function MobileCallBar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 90, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-navy-dark/95 p-3 backdrop-blur sm:hidden"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-navy-dark/85 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:hidden"
         >
           <div className="flex gap-3">
             <a href={site.phoneHref} className="btn-gold flex-1 px-4 py-3 text-xs">

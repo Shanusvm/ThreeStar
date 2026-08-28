@@ -37,6 +37,10 @@ module.exports = {
         card: '0 18px 50px -20px rgba(11, 31, 58, 0.35)',
       },
       keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
         'fade-up': {
           '0%': { opacity: '0', transform: 'translateY(16px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
@@ -44,6 +48,7 @@ module.exports = {
       },
       animation: {
         'fade-up': 'fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both',
+        marquee: 'marquee 32s linear infinite',
       },
     },
   },

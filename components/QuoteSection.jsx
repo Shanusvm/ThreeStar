@@ -8,7 +8,7 @@ import { serviceNames } from '@/lib/services';
 import { site } from '@/lib/site';
 
 const field =
-  'w-full rounded-xl border border-navy/15 bg-white px-4 py-3 text-sm text-navy placeholder:text-navy/35 transition-colors focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30';
+  'w-full rounded-[0.9rem] border border-navy/12 bg-white px-4 py-3.5 text-[0.95rem] sm:text-sm text-navy placeholder:text-navy/35 transition-colors focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30';
 
 const label = 'mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-navy/55';
 
@@ -55,7 +55,8 @@ export default function QuoteSection() {
         <Reveal>
           <p className="eyebrow">Free quotation</p>
           <h2 className="heading mt-4 text-navy">Tell us about your project</h2>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-navy/65">
+          <span aria-hidden="true" className="hairline mt-6 block max-w-[7rem]" />
+          <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-navy/60 sm:text-base">
             Send a few details and Daniel will get back to you — usually the same day — with a time
             to come out and price the job.
           </p>
@@ -63,7 +64,7 @@ export default function QuoteSection() {
           <div className="mt-10 space-y-4">
             <a
               href={site.phoneHref}
-              className="group flex items-center gap-4 rounded-2xl border border-navy/10 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-card"
+              className="card group flex items-center gap-4 p-5"
             >
               <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold-sand text-gold-dark transition-colors group-hover:bg-gold group-hover:text-navy">
                 <PhoneIcon className="h-6 w-6" />
@@ -78,7 +79,7 @@ export default function QuoteSection() {
 
             <a
               href={`mailto:${site.email}`}
-              className="group flex items-center gap-4 rounded-2xl border border-navy/10 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-card"
+              className="card group flex items-center gap-4 p-5"
             >
               <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold-sand text-gold-dark transition-colors group-hover:bg-gold group-hover:text-navy">
                 <MailIcon className="h-6 w-6" />
@@ -99,7 +100,7 @@ export default function QuoteSection() {
         </Reveal>
 
         <Reveal delay={0.12}>
-          <div className="relative rounded-[1.75rem] border border-navy/10 bg-gold-sand/60 p-6 shadow-soft sm:p-9">
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-navy/8 bg-gradient-to-br from-gold-sand to-white p-5 shadow-[0_30px_70px_-40px_rgba(11,31,58,0.5)] sm:p-9">
             <AnimatePresence mode="wait" initial={false}>
               {sent ? (
                 <motion.div
