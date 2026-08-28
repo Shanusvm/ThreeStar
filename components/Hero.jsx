@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import SmartImage from './SmartImage';
+import HeroSlider from './HeroSlider';
 import { ArrowIcon, PhoneIcon, StarIcon } from './Icons';
 import { site } from '@/lib/site';
 
@@ -128,20 +128,11 @@ export default function Hero() {
           />
 
           <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] sm:aspect-[5/5] sm:rounded-[2rem]">
-            <motion.div style={{ y: imageY }} className="absolute inset-0 scale-110">
-              <SmartImage
-                src="https://images.unsplash.com/photo-1646640381839-02748ae8ddf0?auto=format&fit=crop&w=1100&q=80"
-                alt="Tradesman using a cordless drill while working on a home exterior"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                priority
-                fallbackLabel="Three Star Handyman"
-                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-              />
-            </motion.div>
+            <HeroSlider parallaxY={imageY} />
 
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-navy via-navy/25 to-transparent"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy via-navy/25 to-transparent"
             />
 
             {/* glass caption sits inside the frame so mobile layout stays tight */}
