@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy: #0b1f3a;
+    --gold: #c9a063;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* offset for the sticky header when jumping to anchors */
+    scroll-padding-top: 7rem;
+  }
+
+  body {
+    @apply bg-white text-navy antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--gold);
+    color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold
+           uppercase tracking-[0.12em] transition-all duration-300 focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+  }
+
+  .btn-gold {
+    @apply btn bg-gold text-navy shadow-soft hover:bg-gold-light hover:shadow-card
+           hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-navy {
+    @apply btn bg-navy text-white hover:bg-navy-light hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply btn border border-white/30 text-white hover:border-gold hover:text-gold
+           hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .section {
+    @apply py-20 md:py-28;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-gold-dark;
+  }
+
+  .eyebrow-light {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-gold-light;
+  }
+
+  .heading {
+    @apply text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-[2.75rem];
+  }
+}
